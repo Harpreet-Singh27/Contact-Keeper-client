@@ -33,7 +33,7 @@ const ContactState = (props) => {
     // contact.id = c++;
 
     try {
-      const res = await axios.get('https://contact-keeper-server.onrender.comapi/contacts');
+      const res = await axios.get('https://contact-keeper-api.onrender.com/api/contacts');
       dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (err) {
       dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
@@ -51,7 +51,7 @@ const ContactState = (props) => {
     };
 
     try {
-      const res = await axios.post('https://contact-keeper-server.onrender.comapi/contacts', contact, config);
+      const res = await axios.post('https://contact-keeper-api.onrender.com/api/contacts', contact, config);
       dispatch({ type: ADD_CONTACT, payload: res.data });
     } catch (err) {
       dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
@@ -63,7 +63,7 @@ const ContactState = (props) => {
   const deleteContact = async (id) => {
     // console.log(initialState.contacts + ' ID= ' + id);
     try {
-      await axios.delete(`https://contact-keeper-server.onrender.comapi/contacts/${id}`);
+      await axios.delete(`https://contact-keeper-api.onrender.com/api/contacts/${id}`);
 
       dispatch({
         type: DELETE_CONTACT,
@@ -87,7 +87,7 @@ const ContactState = (props) => {
 
     try {
       const res = await axios.put(
-        `https://contact-keeper-server.onrender.comapi/contacts/${contact._id}`,
+        `https://contact-keeper-api.onrender.com/api/contacts/${contact._id}`,
         contact,
         config
       );

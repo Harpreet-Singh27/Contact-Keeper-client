@@ -34,7 +34,7 @@ const AuthState = (props) => {
     }
 
     try {
-      const res = await axios.get('https://contact-keeper-server.onrender.comapi/auth');
+      const res = await axios.get('https://contact-keeper-api.onrender.com/api/auth');
 
       dispatch({
         type: USER_LOADED,
@@ -54,7 +54,7 @@ const AuthState = (props) => {
     };
 
     try {
-      const res = await axios.post('https://contact-keeper-server.onrender.comapi/users', formData, config);
+      const res = await axios.post('https://contact-keeper-api.onrender.com/api/users', formData, config);
 
       dispatch({
         type: REGISTER_SUCCESS,
@@ -72,6 +72,8 @@ const AuthState = (props) => {
 
   // login user
   const login = async (formData) => {
+    // axios.defaults.headers.common['Access-Control-Allow-Origin']='*'
+    // axios.defaults.headers.common['Access-Control-Allow-Methods']='*'
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -79,7 +81,7 @@ const AuthState = (props) => {
     };
 
     try {
-      const res = await axios.post('https://contact-keeper-server.onrender.comapi/auth', formData, config);
+      const res = await axios.post('https://contact-keeper-api.onrender.com/api/auth', formData, config);
 
       dispatch({
         type: LOGIN_SUCCESS,
